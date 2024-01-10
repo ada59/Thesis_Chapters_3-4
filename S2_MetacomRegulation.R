@@ -10,7 +10,6 @@ library(tseries)
 library(dplyr)
 library(ggplot2)
 
-
 # Main source: =================================================================
 # https://www.r-bloggers.com/2022/06/augmented-dickey-fuller-test-in-r/
 # https://rpubs.com/JSHAH/481706
@@ -119,3 +118,4 @@ adf.test(out.rawAgg_u2$Diatoms$qTD)              # p-value = 0.2342
 adf.test(out.rawAgg_u2$Fish$qTD)                 # p-value = 0.4899
 
 # End of script#################################################################
+################################################################################
