@@ -52,33 +52,33 @@ for (file in all_files) {
 #out.rawPA_u <- lapply(lPA_u, function(x) {
 #  iNEXT3D(data = x, diversity = "TD",
 #          q = c(0, 1, 2), datatype = "incidence_raw", nboot = 100)
-})
+#})
                                      
 
 
 # Agg --------------------------------------------------------------------------
-out.rawAgg <- lapply(lAllAbuAgg, function(x) {
-  iNEXT3D(data = x, diversity = "TD",
-          q = c(0, 1, 2), datatype = "abundance", nboot = 100)
-})
+#out.rawAgg <- lapply(lAllAbuAgg, function(x) {
+#  iNEXT3D(data = x, diversity = "TD",
+#          q = c(0, 1, 2), datatype = "abundance", nboot = 100)
+#})
 
-out.rawAgg_d <- lapply(lAbuAgg_d, function(x) {
-  iNEXT3D(data = x, diversity = "TD",
-          q = c(0, 1, 2), datatype = "abundance", nboot = 100)
-})
+#out.rawAgg_d <- lapply(lAbuAgg_d, function(x) {
+#  iNEXT3D(data = x, diversity = "TD",
+#          q = c(0, 1, 2), datatype = "abundance", nboot = 100)
+#})
 
-out.rawAgg_u <- lapply(lAbuAgg_u, function(x) {
-  iNEXT3D(data = x, diversity = "TD",
-          q = c(0, 1, 2), datatype = "abundance", nboot = 100)                    
-})
+#out.rawAgg_u <- lapply(lAbuAgg_u, function(x) {
+#  iNEXT3D(data = x, diversity = "TD",
+#          q = c(0, 1, 2), datatype = "abundance", nboot = 100)                    
+#})
 
 
 # Community abundance ----------------------------------------------------------
 #out.rawAbu <- lapply(lAllAbu, function(x) {lapply(x, function(y) {iNEXT3D(data = y, diversity = "TD",
-#                                                                          q = c(0, 1, 2), datatype = "abundance", nboot = 100)})})
+#                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})})
+#
 
-
-#Results_AlphaDivRData <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/Results_AlphaDivRData"
+Results_AlphaDivRData <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/Results_AlphaDivRData"
 #save(out.rawPA, out.rawPA_d, out.rawPA_u, file = paste0(Results_AlphaDivRData, "/out.rawPA_Alpha_Taxonomic.RData"))
 #save(out.rawAgg, out.rawAgg_d, out.rawAgg_u, file = paste0(Results_AlphaDivRData, "/out.rawAgg_Alpha_Taxonomic.RData"))
 #save(out.rawAbu, file = paste0(Results_AlphaDivRData, "/out.rawAbu_Alpha_Taxonomic.RData"))
