@@ -76,7 +76,7 @@ for (file in all_files) {
 # Community abundance ----------------------------------------------------------
 #out.rawAbu <- lapply(lAllAbu, function(x) {lapply(x, function(y) {iNEXT3D(data = y, diversity = "TD",
 #                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})})
-#
+
 
 Results_AlphaDivRData <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/Results_AlphaDivRData"
 #save(out.rawPA, out.rawPA_d, out.rawPA_u, file = paste0(Results_AlphaDivRData, "/out.rawPA_Alpha_Taxonomic.RData"))
