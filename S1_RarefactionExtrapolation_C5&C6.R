@@ -83,9 +83,9 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})})
 
 
-#save(out.rawPA, out.rawPA_d, out.rawPA_u, file = paste0(Results_AlphaDivRData, "/out.rawPA_Alpha_Taxonomic.RData"))
-#save(out.rawAgg, out.rawAgg_d, out.rawAgg_u, file = paste0(Results_AlphaDivRData, "/out.rawAgg_Alpha_Taxonomic.RData"))
-#save(out.rawAbu, file = paste0(Results_AlphaDivRData, "/out.rawAbu_Alpha_Taxonomic.RData"))
+#save(out.rawPA, out.rawPA_d, out.rawPA_u, file = paste0(Results_AlphaDivRData, "/S1_out.rawPA_Alpha_Taxonomic.RData"))
+#save(out.rawAgg, out.rawAgg_d, out.rawAgg_u, file = paste0(Results_AlphaDivRData, "/S1_out.rawAgg_Alpha_Taxonomic.RData"))
+#save(out.rawAbu, file = paste0(Results_AlphaDivRData, "/S1_out.rawAbu_Alpha_Taxonomic.RData"))
 
 
 
@@ -101,7 +101,6 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #out.rawPA_uFD <- iNEXT3D(data = lPA_u$fish, diversity = "FD",
 #                         FDdistM = dist_Euc_av, FDtype = "tau_values", FDtau = NULL,
 #                         q = c(0, 1, 2), datatype = "incidence_raw", nboot = 100)
-
 #out.rawAgg_FD <- iNEXT3D(data = lAllAbuAgg$fish, diversity = "FD",
 #                        FDdistM = dist_Euc_av, FDtype = "tau_values", FDtau = NULL,
 #                       q = c(0, 1, 2), datatype = "abundance", nboot = 100)           # default tau is mean distance
@@ -113,8 +112,8 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)
 
 
-#save(out.rawPA_FD, out.rawPA_dFD, out.rawPA_uFD, file = paste0(Results_AlphaDivRData, "/out.rawPA_Alpha_FishTrait.RData"))
-#save(out.rawAgg_FD, out.rawAgg_dFD, out.rawAgg_uFD, file = paste0(Results_AlphaDivRData, "/out.rawAgg_Alpha_FishTrait.RData"))
+#save(out.rawPA_FD, out.rawPA_dFD, out.rawPA_uFD, file = paste0(Results_AlphaDivRData, "/S1_out.rawPA_Alpha_FishTrait.RData"))
+#save(out.rawAgg_FD, out.rawAgg_dFD, out.rawAgg_uFD, file = paste0(Results_AlphaDivRData, "/S1_out.rawAgg_Alpha_FishTrait.RData"))
 
 
 ################################################################################
