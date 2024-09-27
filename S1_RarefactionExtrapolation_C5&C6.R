@@ -5,7 +5,8 @@
 ################################################################################
 
 
-# libraries: ===================================================================
+################################################################################
+# LIBRARIES: ===================================================================
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
@@ -17,7 +18,8 @@ library(iNEXT.3D)
 library(patchwork)
 
 
-# read data: ===================================================================
+################################################################################
+# READ DATA: ===================================================================
 rm(list=ls())
 Thesis_GeneralMethods <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Thesis_GeneralMethods"
 mainanalysisRData <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/mainanalysisRData"
@@ -30,18 +32,18 @@ for (file in all_files) {
   load(file)
 }
 
-load("C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Thesis_GeneralMethods/FormattedTrait_Trinidad/dist_Euc_av.RData")
+load(paste0(Thesis_GeneralMethods,"/FormattedTrait_Trinidad/dist_Euc_av.RData"))
 acr <- read.csv(paste0(Thesis_GeneralMethods,"/acronymsNR.csv"), h=T)
 acr$acronym2 <- paste0(substring(acr$acronym,1,1), "_", sub(".", "", acr$acronym))
 identical(sort(unique(colnames(dist_Euc_av))), sort(unique(acr$acronym2)))      # TRUE
 rownames(dist_Euc_av) <- acr$name[match(rownames(dist_Euc_av), acr$acronym2)]
 colnames(dist_Euc_av) <- acr$name[match(colnames(dist_Euc_av), acr$acronym2)]
 dist_Euc_av <- (dist_Euc_av - min(dist_Euc_av)) / (max(dist_Euc_av) - min(dist_Euc_av))            # Re-scale between 0 & 1
-save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         # species names formatted properly using acr
+save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))                            # Properly formmated for iNEXT
 
 
 ################################################################################
-# curves (one x metacom) =======================================================
+# CURVES (ONE X METACOM) =======================================================
 
 # PA ---------------------------------------------------------------------------
 #out.rawPA <- lapply(lAllPA, function(x) {
@@ -60,7 +62,6 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #})
                                      
 
-
 # Agg --------------------------------------------------------------------------
 #out.rawAgg <- lapply(lAllAbuAgg, function(x) {
 #  iNEXT3D(data = x, diversity = "TD",
@@ -78,9 +79,9 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #})
 
 
-# Community abundance ==========================================================
+# Community abundance ----------------------------------------------------------
 #out.rawAbu <- lapply(lAllAbu, function(x) {lapply(x, function(y) {iNEXT3D(data = y, diversity = "TD",
-#                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})})
+#                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})}) # diversity-stability
 
 
 #save(out.rawPA, out.rawPA_d, out.rawPA_u, file = paste0(Results_AlphaDivRData, "/S1_out.rawPA_Alpha_Taxonomic.RData"))
@@ -88,10 +89,11 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #save(out.rawAbu, file = paste0(Results_AlphaDivRData, "/S1_out.rawAbu_Alpha_Taxonomic.RData"))
 
 
-
 ################################################################################
-# Trait Diversity:--------------------------------------------------------------
+# TRAIT DIVERSITY:==============================================================
 
+
+# PA ---------------------------------------------------------------------------
 #out.rawPA_FD <- iNEXT3D(data = lAllPA$fish, diversity = "FD",
 #                        FDdistM = dist_Euc_av, FDtype = "tau_values", FDtau = NULL,
 #                        q = c(0, 1, 2), datatype = "incidence_raw", nboot = 100)       # default tau is mean distance
@@ -101,6 +103,9 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #out.rawPA_uFD <- iNEXT3D(data = lPA_u$fish, diversity = "FD",
 #                         FDdistM = dist_Euc_av, FDtype = "tau_values", FDtau = NULL,
 #                         q = c(0, 1, 2), datatype = "incidence_raw", nboot = 100)
+
+
+# Agg --------------------------------------------------------------------------
 #out.rawAgg_FD <- iNEXT3D(data = lAllAbuAgg$fish, diversity = "FD",
 #                        FDdistM = dist_Euc_av, FDtype = "tau_values", FDtau = NULL,
 #                       q = c(0, 1, 2), datatype = "abundance", nboot = 100)           # default tau is mean distance
@@ -112,12 +117,18 @@ save(dist_Euc_av, file=paste0(mainanalysisRData, "/dist_Euc_av.RData"))         
 #                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)
 
 
+# Community abundance ----------------------------------------------------------
+#out.rawAbu_FD <- lapply(lAllAbu$fish, function(x) {lapply(x, function(y) {iNEXT3D(data = y, diversity = "FD", FDtype = "tau_values", FDtau = NULL, FDdistM = dist_Euc_av,
+#                                                                         q = c(0, 1, 2), datatype = "abundance", nboot = 100)})}) # diversity-stability
+
+
 #save(out.rawPA_FD, out.rawPA_dFD, out.rawPA_uFD, file = paste0(Results_AlphaDivRData, "/S1_out.rawPA_Alpha_FishTrait.RData"))
 #save(out.rawAgg_FD, out.rawAgg_dFD, out.rawAgg_uFD, file = paste0(Results_AlphaDivRData, "/S1_out.rawAgg_Alpha_FishTrait.RData"))
+#save(out.rawAbu_FD, file = paste0(Results_AlphaDivRData, "/S1_out.rawAbu_Alpha_FishTrait.RData"))
 
 
 ################################################################################
-# data info ====================================================================
+# DATA INFO ====================================================================
 
 create_counts_vector <- function(df) {
   counts_vector <- c(
@@ -163,7 +174,7 @@ functionDataInfo <- function(dt, type){
   return(DataInfo_Table)
 }
 
-# Presence-absence: ------------------------------------------------------------  
+# presence-absence: ------------------------------------------------------------  
 DataInfoPA_Table <- functionDataInfo(lAllPA, type="PA")
 DataInfoPA_Table <- within(DataInfoPA_Table, rm(Assemblage, Q1, Q2, Q3, Q4, Q5))       # NR
 DataInfoPA_d_Table <- functionDataInfo(lPA_d, type="PA")
@@ -172,7 +183,7 @@ DataInfoPA_u_Table <- functionDataInfo(lPA_u, type="PA")
 DataInfoPA_u_Table <- within(DataInfoPA_u_Table, rm(Assemblage, Q1, Q2, Q3, Q4, Q5))   # UNDIS
 
 
-# Aggregated abundances: -------------------------------------------------------
+# aggregated abundances: -------------------------------------------------------
 DataInfoAgg_Table <- functionDataInfo(lAllAbuAgg, type="Abu")
 DataInfoAgg_Table <- within(DataInfoAgg_Table, rm(Assemblage, f1,f2,f3,f4,f5))
 names(DataInfoAgg_Table)[names(DataInfoAgg_Table)=="V1"] <- "Singletons"
@@ -205,7 +216,7 @@ write.csv(DataInfoAgg_u_Table, file=paste0(table_path, "/DataInfoAgg_u_Table.csv
 
 
 ################################################################################
-# plots: =======================================================================
+# PLOTS: =======================================================================
 all_files <- list.files(Results_AlphaDivRData, pattern = "\\.RData$", full.names = TRUE)
 
 # Loop through the list and load each RData file
@@ -214,7 +225,7 @@ for (file in all_files) {
 }
 
 
-# panel of 3 x 4 ===============================================================
+# panel of 3 x 4 ---------------------------------------------------------------
 plot_path <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/Plots"
 range(out.rawPA$fish$TDiNextEst$size_based$nT)
 extract_size_based <- function(dt, dimension="tax") {
@@ -292,8 +303,7 @@ for_observed <- subset(for_observed, for_observed$Method=="Observed")
 save(for_observed, file=paste0(mainanalysisRData, "/for_observed.RData"))
 
 
-# Size vs coverage =============================================================
-
+# Size vs coverage -------------------------------------------------------------
 size_vs_coverage <- function(dt, type=NULL){
   plotPA <- dt
   
@@ -367,7 +377,7 @@ gt2 <- gridExtra::grid.arrange(gt, left = "Coverage", bottom = "Size (number of 
 ggsave(paste0(plot_path, "/Size_vs_CoverageAggregated.png"), gt2, width = 8, height = 10)
 
 
-# Diversity vs coverage ========================================================
+# diversity vs coverage --------------------------------------------------------
 diversity_vs_coverage <- function(dt, order=NULL) {
   if ("m" %in% names(dt)){
     names(dt)[names(dt)=="m"] <- "nT"
@@ -412,7 +422,7 @@ layout_fun <- function(x,y,z){
   return(gt2)
 }
 
-# Order q0 (richness): ---------------------------------------------------------
+# Order q0 (richness): 
 pTD0 <- diversity_vs_coverage(out.rawPA_S_C, order="0")
 pTD0
 pTD0_d <- diversity_vs_coverage(out.rawPAd_S_C, order="0")
@@ -428,7 +438,7 @@ pTDAgg0_u <- diversity_vs_coverage(out.rawAggu_S_C, order="0")
 pTDAgg0_u
 
 
-# Order q1 (Shannon): ----------------------------------------------------------
+# Order q1 (Shannon):
 pTD1 <- diversity_vs_coverage(out.rawPA_S_C, order="1")
 pTD1
 pTD1_d <- diversity_vs_coverage(out.rawPAd_S_C, order="1")
@@ -444,7 +454,7 @@ pTDAgg1_u <- diversity_vs_coverage(out.rawAggu_S_C, order="1")
 pTDAgg1_u
 
 
-# Order q=2 (Simpson): ---------------------------------------------------------
+# Order q=2 (Simpson): 
 pTD2 <- diversity_vs_coverage(out.rawPA_S_C, order="2")
 pTD2
 pTD2_d <- diversity_vs_coverage(out.rawPAd_S_C, order="2")
@@ -460,7 +470,8 @@ pTDAgg2_u <- diversity_vs_coverage(out.rawAggu_S_C, order="2")
 pTDAgg2_u
 
 
-
+################################################################################
+# SAVE: ========================================================================
 resultTD <- layout_fun(pTD0, pTD1, pTD2)
 ggsave(paste0(plot_path, "/Size_vs_Diversity_NorthernRangePA.png"), resultTD, width = 8, height = 10)
 
@@ -483,6 +494,7 @@ ggsave(paste0(plot_path, "/Size_vs_Diversity_UndistubedAgg.png"), resultAggTD_u,
 
 ################################################################################
 # curves (pooling x 5 y) =======================================================
-# To Be Completed for Ms (following recommendation by Anne Chao)
+# to be completed for ms (following recommendation from Anne Chao)
 
 # End of script#################################################################
+################################################################################

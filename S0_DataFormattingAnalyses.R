@@ -1,9 +1,10 @@
 ################################################################################
-# S0B Data Formatting for various analyses
+# S0 Data Formatting for various analyses
 # AFE
 # Jan 2024 & update May 2024
 ################################################################################
 
+################################################################################
 # libraries: ===================================================================
 library(dplyr)
 library(tidyverse)
@@ -15,8 +16,9 @@ rm(list=ls())
 
 formatted_data_path <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Thesis_GeneralMethods/FormattedData_Trinidad"
 
+
 ################################################################################
-# ReadData =====================================================================
+# read data: ===================================================================
 
 load(paste0(formatted_data_path, "/aggFishMacroInv2024.RData"))
 load(paste0(formatted_data_path, "/BenthicInv1.RData"))
@@ -29,7 +31,7 @@ dia <- Diatoms                                   # Diatom morphospecies
 
 
 ################################################################################
-# Format for analyses ==========================================================
+# format for analyses: =========================================================
 
 c1 <- f %>% group_by(Site, Month, Year) %>% summarise(nDay= n_distinct(Day))
 range(c1$nDay) # 1, OK 
@@ -75,7 +77,7 @@ fbsen <- subset(fb, !fb$Taxa %in% c("Atya_spp", "Macrobrachium_spp", "Eudaniela_
 
 
 ################################################################################
-# incidence, abundance & agg. abundance ========================================
+# incidence, abundance & agg. abundance: =======================================
 
 format_incidence <- function(x, type=NULL, v="NULL") {
   dt <- x
@@ -116,7 +118,7 @@ lAllBioAgg <- lapply(lAllBio, function(x) {lapply(x, function(y) {rowSums(y)})})
 
 
 ################################################################################
-# create lists D & U ===========================================================
+# create lists D & U: ==========================================================
 lPA_d <- lapply(lAllPA, function(x) {lapply(x, function(y) {y[names(y) %like% "_d"]})})
 lPA_u <- lapply(lAllPA, function(x) {lapply(x, function(y) {y[names(y) %like% "_u"]})})
 
@@ -134,7 +136,7 @@ lBioAgg_u <- lapply(lBio_u, function(x) {lapply(x, function(y) {rowSums(y)})})
 
 
 ################################################################################
-# Rm Macrocrustaceans ==========================================================
+# rm macrocrustaceans: =========================================================
 rm_fishmac_bimac <- function(x){
   x[["fishmac"]] <- NULL
   x[["bimac"]] <- NULL
@@ -160,7 +162,8 @@ lAbuAgg_u <- rm_fishmac_bimac(lAbuAgg_u)
 lBioAgg_u <- rm_fishmac_bimac(lBioAgg_u)
 
 
-# Save objects =================================================================
+################################################################################
+# save objects: ================================================================
 mainanalysisRData <- "C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs/mainanalysisRData"
 setwd(mainanalysisRData)
 
@@ -187,6 +190,7 @@ save(lAbuAgg_u, file="lAbuAgg_u.RData")    # agg abundance
 save(lBioAgg_u, file="lBioAgg_u.RData")    # agg biomass
 
 setwd("C:/Users/afe1/OneDrive - University of St Andrews/PHD/0_GLOBAL_THESIS_CHAPTER_GITHUB_REPOSITORIES/Shared-SharedSMs")
+
 
 # END OF SCRIPT ################################################################
 ################################################################################

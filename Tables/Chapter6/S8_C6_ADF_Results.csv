@@ -1,0 +1,33 @@
+"Group","CoverageValue","TaxaOrderQ","Statistic","Pval"
+"Disturbed","Cmin","Diatoms q0",-2.09,0.54
+"Disturbed","Cmin","Diatoms q2",-1.84,0.633
+"Disturbed","Cmin","Invertebrates q0",-3.98,0.024
+"Disturbed","Cmin","Invertebrates q2",-1.52,0.756
+"Disturbed","Cmin","Fish q0",-1.52,0.756
+"Disturbed","Cmin","Fish q2",-1.32,0.831
+"Disturbed","Cmin","Fish (Trait) q0",-1.51,0.759
+"Disturbed","Cmin","Fish (Trait) q2",-1.38,0.807
+"Disturbed","Cmax","Diatoms q0",-1.73,0.675
+"Disturbed","Cmax","Diatoms q2",-1.65,0.706
+"Disturbed","Cmax","Invertebrates q0",-2.47,0.392
+"Disturbed","Cmax","Invertebrates q2",-1.47,0.774
+"Disturbed","Cmax","Fish q0",-1.66,0.702
+"Disturbed","Cmax","Fish q2",-1.26,0.853
+"Disturbed","Cmax","Fish (Trait) q0",-1.6,0.725
+"Disturbed","Cmax","Fish (Trait) q2",-1.38,0.809
+"Undisturbed","Cmin","Diatoms q0",-3.95,0.025
+"Undisturbed","Cmin","Diatoms q2",-5.2,0.01
+"Undisturbed","Cmin","Invertebrates q0",-1.72,0.679
+"Undisturbed","Cmin","Invertebrates q2",-1.79,0.653
+"Undisturbed","Cmin","Fish q0",-2.38,0.428
+"Undisturbed","Cmin","Fish q2",-1.76,0.665
+"Undisturbed","Cmin","Fish (Trait) q0",-1.72,0.681
+"Undisturbed","Cmin","Fish (Trait) q2",-0.94,0.929
+"Undisturbed","Cmax","Diatoms q0",-3.45,0.071
+"Undisturbed","Cmax","Diatoms q2",-5.27,0.01
+"Undisturbed","Cmax","Invertebrates q0",-3.36,0.083
+"Undisturbed","Cmax","Invertebrates q2",-1.93,0.599
+"Undisturbed","Cmax","Fish q0",-2.76,0.283
+"Undisturbed","Cmax","Fish q2",-1.85,0.631
+"Undisturbed","Cmax","Fish (Trait) q0",-1.93,0.598
+"Undisturbed","Cmax","Fish (Trait) q2",-0.97,0.925

@@ -1,0 +1,17 @@
+"Group","CoverageValue","TaxaOrderQ","Statistic","Pval"
+"Northern Range","Cmin","Diatoms q0",-2.82,0.261
+"Northern Range","Cmin","Diatoms q2",-4.68,0.01
+"Northern Range","Cmin","Invertebrates q0",0,0.99
+"Northern Range","Cmin","Invertebrates q2",-1.31,0.834
+"Northern Range","Cmin","Fish q0",-1.48,0.772
+"Northern Range","Cmin","Fish q2",-1.04,0.915
+"Northern Range","Cmin","Fish (Trait) q0",-0.73,0.955
+"Northern Range","Cmin","Fish (Trait) q2",-0.92,0.932
+"Northern Range","Cmax","Diatoms q0",-2.09,0.537
+"Northern Range","Cmax","Diatoms q2",-4.78,0.01
+"Northern Range","Cmax","Invertebrates q0",-1.57,0.737
+"Northern Range","Cmax","Invertebrates q2",-1.29,0.842
+"Northern Range","Cmax","Fish q0",-1.39,0.803
+"Northern Range","Cmax","Fish q2",-1,0.921
+"Northern Range","Cmax","Fish (Trait) q0",-0.72,0.957
+"Northern Range","Cmax","Fish (Trait) q2",-0.93,0.931
